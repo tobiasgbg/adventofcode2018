@@ -35,8 +35,8 @@ def main():
 				overlap += 1
 
 	for line in file_list:
-    	line_split = line.split('@')
-        line_id = line_split[0]
+		line_split = line.split('@')
+		line_id = line_split[0]
 		line_split = line_split[1]
 		line_split = line_split.split(',')
 		x_start = line_split[0]
@@ -46,9 +46,15 @@ def main():
 		x_length = line_split[0]
 		y_length = line_split[1]
 
-		for i in range(0, int(x_length)):
-			for j in range(0, int(y_length)):
-				square[int(x_start)+i][int(y_start)+j] += 1
+		overlap = 0
+
+		for i in range(int(x_start), int(x_start) + int(x_length)):
+			for j in range(int(y_start), int(y_start) + int(y_length)):
+				if square[i][j] > 1:
+					overlap += 1
+
+		if overlap == 0:
+			print("ID: " + str(line_id) + "has no overlap")		
 
 	#print("x: " + x_start + " y: " + y_start + " x size: " + x_length + " y size: " + y_length)
 	print("Overlap is: " + str(overlap))
