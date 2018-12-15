@@ -60,6 +60,7 @@ def main():
     # move each train based on map
 
     # check for collisions
+    # if collision then stop
 
     # sort trains again
 
